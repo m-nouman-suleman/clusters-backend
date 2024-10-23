@@ -2,7 +2,7 @@
 
 /** @type {import('@adonisjs/framework/src/Server')} */
 const Server = use('Server')
-const { connectToMongo } = require('./mongo')
+const { connectToMongo } = require('../database/mongo')
 /*
 |--------------------------------------------------------------------------
 | Global Middleware
@@ -62,8 +62,3 @@ Server
   .registerNamed(namedMiddleware)
   .use(serverMiddleware)
 
-  async function boot() {
-    await connectToMongo()
-  }
-  
-  boot()

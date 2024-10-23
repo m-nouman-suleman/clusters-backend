@@ -17,3 +17,7 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+Route.get('/api/clusters/:id/metrics', 'ClusterController.getMetrics')
+Route.get('/api/clusters/:id/snapshot-policy', 'SnapshotController.getPolicy')
+Route.put('/api/clusters/:id/snapshot-policy', 'SnapshotController.updatePolicy')

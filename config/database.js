@@ -78,22 +78,4 @@ module.exports = {
       database: Env.get('DB_DATABASE', 'adonis')
     }
   },
-
-  /*
-  |--------------------------------------------------------------------------
-  | MongoDB
-  |--------------------------------------------------------------------------
-  |
-  | Here we define connection settings for MongoDB database.
-  |
-  | npm i --save mongodb
-  |
-  */
-  mongodb: {
-    client: 'mongodb',
-    connection: {
-      connectionString: Env.get('MONGO_URL', 'mongodb://localhost:27017/clusters'),
-      database: Env.get('DB_NAME', 'cluster_management')
-    }
-  }
 }
