@@ -1,4 +1,4 @@
-const Cluster = require('../Models/Cluster');
+const Cluster = require('../../Models/Cluster');
 
 class ClusterController {
   async getMetrics({ params, response }) {

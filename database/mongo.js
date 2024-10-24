@@ -19,13 +19,6 @@ const connectToMongo = async () => {
     // Get the database instance
     db = client.db(dbName);
 
-    // Handle process termination and close the MongoDB connection
-    process.on('SIGINT', async () => {
-      await closeConnection();
-      console.log('MongoDB connection closed due to app termination.');
-      process.exit(0);
-    });
-
   } catch (error) {
     console.error('Failed to connect to MongoDB:', error);
     process.exit(1);

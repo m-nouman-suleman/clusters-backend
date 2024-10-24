@@ -2,7 +2,7 @@
 
 /** @type {import('@adonisjs/framework/src/Server')} */
 const Server = use('Server')
-const { connectToMongo } = require('../database/mongo')
+
 /*
 |--------------------------------------------------------------------------
 | Global Middleware
@@ -16,8 +16,9 @@ const globalMiddleware = [
   'Adonis/Middleware/BodyParser',
   'Adonis/Middleware/Session',
   'Adonis/Middleware/Shield',
-  'Adonis/Middleware/AuthInit',
-  'App/Middleware/ConvertEmptyStringsToNull',
+  'Adonis/Middleware/Cors',
+  'Adonis/Middleware/Static',
+  'Adonis/Middleware/AuthInit'
 ]
 
 /*
@@ -38,8 +39,8 @@ const globalMiddleware = [
 |
 */
 const namedMiddleware = {
-  auth: 'Adonis/Middleware/Auth',
-  guest: 'Adonis/Middleware/AllowGuestOnly'
+  guest: 'Adonis/Middleware/AllowGuestOnly',
+  removeCsrf: 'App/Middleware/RemoveCsrf'
 }
 
 /*

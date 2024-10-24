@@ -1,16 +1,14 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 const Cluster = require('../../app/Models/Cluster');
-
+const { generateMetricArray } = require('../../utils/generateMetricsData');
 // Dummy data for clusters
+const numDataPoints = 300; // Number of points you want in each array
 const clusters = [
   {
     uuid: '123e4567-e89b-12d3-a456-426614174000',
     name: 'Cluster A',
-    metrics: {
-      iops: [100, 200, 300],
-      throughput: [400, 500, 600],
-    },
+    metrics:  {...generateMetricArray(numDataPoints)},
     iopsRead: 120,
     iopsWrite: 150,
     throughputRead: 220,
@@ -19,10 +17,7 @@ const clusters = [
   {
     uuid: '123e4567-e89b-12d3-a456-426614174001',
     name: 'Cluster B',
-    metrics: {
-      iops: [150, 250, 350],
-      throughput: [450, 550, 650],
-    },
+    metrics: {...generateMetricArray(numDataPoints)},
     iopsRead: 130,
     iopsWrite: 160,
     throughputRead: 230,
@@ -52,9 +47,8 @@ const seedClusters = async () => {
 
   } catch (error) {
     console.error('Error seeding cluster data:', error);
-  } finally {
     await mongoose.connection.close();
-  }
+  } 
 };
 
 // Run the seeder if this file is run directly

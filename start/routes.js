@@ -1,23 +1,17 @@
 'use strict'
 
-/*
-|--------------------------------------------------------------------------
-| Routes
-|--------------------------------------------------------------------------
-|
-| Http routes are entry points to your web application. You can create
-| routes for different URL's and bind Controller actions to them.
-|
-| A complete guide on routing is available here.
-| http://adonisjs.com/docs/4.1/routing
-|
-*/
-
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+console.log('Loading routes...');
+
 Route.on('/').render('welcome')
 
-Route.get('/api/clusters/:id/metrics', 'ClusterController.getMetrics')
-Route.get('/api/clusters/:id/snapshot-policy', 'SnapshotController.getPolicy')
-Route.put('/api/clusters/:id/snapshot-policy', 'SnapshotController.updatePolicy')
+// Group routes for clusters without any middleware for testing
+Route.group(() => {
+  Route.get('/clusters/:id/metrics', 'ClusterController.getMetrics')
+  Route.get('/clusters/:id/snapshot-policy', 'SnapshotController.getPolicy')
+  Route.put('/clusters/:id/snapshot-policy', 'SnapshotController.updatePolicy')
+})
+  .prefix('/api')
+  .formats(['json'])

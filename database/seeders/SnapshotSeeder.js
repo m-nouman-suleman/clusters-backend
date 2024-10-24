@@ -60,7 +60,6 @@ const seedSnapshots = async () => {
 
   } catch (error) {
     console.error('Error seeding snapshot data:', error);
-  } finally {
     await mongoose.connection.close();
   }
 };

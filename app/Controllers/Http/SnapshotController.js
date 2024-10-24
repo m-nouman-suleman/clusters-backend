@@ -1,4 +1,4 @@
-const Snapshot = require('../Models/Snapshot');
+const Snapshot = require('../../Models/Snapshot');
 
 class SnapshotController {
   async getPolicy({ params, response }) {

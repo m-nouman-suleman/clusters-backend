@@ -1,4 +1,4 @@
-const { connectToMongo, closeConnection } = require('../database/mongo');
+const { connectToMongo } = require('../database/mongo');
 const seedClusters = require('../database/seeders/ClusterSeeder');
 const seedSnapshots = require('../database/seeders/SnapshotSeeder');
 
@@ -16,8 +16,6 @@ const runSeeders = async () => {
     console.log('Snapshot seeding completed.');
   } catch (error) {
     console.error('Error during seeding:', error);
-  } finally {
-    await closeConnection();
   }
 };
 

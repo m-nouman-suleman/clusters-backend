@@ -65,8 +65,8 @@ module.exports = {
   */
   cookie: {
     httpOnly: true,
-    sameSite: false,
-    path: '/'
+    sameSite: 'lax',
+    path: '/',
   },
 
   /*
@@ -97,5 +97,15 @@ module.exports = {
     password: null,
     db: 0,
     keyPrefix: ''
+  },
+
+  session: {
+    driver: 'cookie',
+    cookieName: 'adonis-session',
+    clearWithBrowser: false,
+    age: '2h'
   }
+  
 }
+
+
